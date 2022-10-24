@@ -4,11 +4,10 @@ spring:
     username: postgres
     password: 2009129x
     driver-class-name: org.postgresql.Driver
-    hikari:
-      maximum-pool-size: 10
     data: classpath:init/data.sql
     schema: classpath:init/schema.sql
     initialization-mode: always
+
 
 
 
