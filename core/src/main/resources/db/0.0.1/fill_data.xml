@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet id="2" author="ArtemU">
+        <comment>
+            Заполняем таблицы пробными данными
+        </comment>
+        <insert tableName="allert_message">
+            <column name="message" value="Стартовое заполнение"/>
+            <column name="patient" value="Ivan"/>
+            <column name="age" value="30"/>
+        </insert>
+        <insert tableName="allert_message">
+            <column name="message" value="Стартовое заполнение"/>
+            <column name="patient" value="Олег"/>
+            <column name="age" value="32"/>
+        </insert>
+        <insert tableName="error_message">
+            <column name="message" value="Стартовое заполнение"/>
+            <column name="patient" value="Ivan"/>
+            <column name="age" value="30"/>
+        </insert>
+        <insert tableName="error_message">
+            <column name="message" value="Стартовое заполнение"/>
+            <column name="patient" value="Evg"/>
+            <column name="age" value="23"/>
+        </insert>
+        <insert tableName="daily_message">
+            <column name="message" value="Стартовое заполнение"/>
+            <column name="patient" value="Ivan"/>
+            <column name="age" value="30"/>
+        </insert>
+        <insert tableName="daily_message">
+            <column name="message" value="Стартовое заполнение"/>
+            <column name="patient" value="Org"/>
+            <column name="age" value="55"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
