@@ -9,19 +9,37 @@
        </comment>
        <createTable tableName="allert_message">
            <column name="message" type="VARCHAR(255)"/>
-           <column name="patient" type="VARCHAR(255)"/>
-           <column name="age" type="INTEGER(3)"/>
+           <column name="patient" type="INTEGER"/>
+           <column name="helthstatus" type="VARCHAR(1)"/>
        </createTable>
        <createTable tableName="daily_message">
            <column name="message" type="VARCHAR(255)"/>
-           <column name="patient" type="VARCHAR(255)"/>
-           <column name="age" type="INTEGER(3)"/>
+           <column name="patient" type="INTEGER"/>
+           <column name="helthstatus" type="VARCHAR(1)"/>
        </createTable>
        <createTable tableName="error_message">
            <column name="message" type="VARCHAR(255)"/>
-           <column name="patient" type="VARCHAR(255)"/>
-           <column name="age" type="INTEGER(3)"/>
+           <column name="patient" type="INTEGER"/>
+           <column name="helthstatus" type="VARCHAR(1)"/>
        </createTable>
+       <createTable tableName="doctor">
+           <column name="d_id" type="INTEGER" autoIncrement="true">
+               <constraints nullable="false" primaryKey="true" unique="true" />
+           </column>
+           <column name="name" type="VARCHAR(255)"/>
+       </createTable>
+       <createTable tableName="patients">
+           <column name="p_id" type="INTEGER" autoIncrement="true">
+               <constraints nullable="false" primaryKey="true" unique="true" />
+           </column>
+           <column name="name" type="VARCHAR(255)"/>
+           <column name="age" type="INTEGER(3)"/>
+           <column name="status" type="VARCHAR(1)"/>
+           <column name="d_id" type="INTEGER">
+               <constraints nullable="false" foreignKeyName="fk_d_id" references="doctor(d_id)"/>
+           </column>
+       </createTable>
+
    </changeSet>
 
 </databaseChangeLog>

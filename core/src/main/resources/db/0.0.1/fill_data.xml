@@ -7,35 +7,38 @@
         <comment>
             Заполняем таблицы пробными данными
         </comment>
-        <insert tableName="allert_message">
-            <column name="message" value="Стартовое заполнение"/>
-            <column name="patient" value="Ivan"/>
-            <column name="age" value="30"/>
+        <insert tableName="doctor">
+            <column name="name" value="Axmat"/>
         </insert>
-        <insert tableName="allert_message">
-            <column name="message" value="Стартовое заполнение"/>
-            <column name="patient" value="Олег"/>
-            <column name="age" value="32"/>
+        <insert tableName="doctor">
+            <column name="name" value="Hamzat"/>
         </insert>
-        <insert tableName="error_message">
-            <column name="message" value="Стартовое заполнение"/>
-            <column name="patient" value="Ivan"/>
-            <column name="age" value="30"/>
+        <insert tableName="doctor">
+            <column name="name" value="Arrarat"/>
         </insert>
-        <insert tableName="error_message">
-            <column name="message" value="Стартовое заполнение"/>
-            <column name="patient" value="Evg"/>
-            <column name="age" value="23"/>
+        <insert tableName="patients">
+            <column name="name" value="Ivan"/>
+            <column name="age" value="27"/>
+            <column name="status" value="h"/>
+            <column name="d_id" value="1"/>
         </insert>
-        <insert tableName="daily_message">
-            <column name="message" value="Стартовое заполнение"/>
-            <column name="patient" value="Ivan"/>
-            <column name="age" value="30"/>
+        <insert tableName="patients">
+            <column name="name" value="Oleg"/>
+            <column name="age" value="47"/>
+            <column name="status" value="h"/>
+            <column name="d_id" value="2"/>
         </insert>
-        <insert tableName="daily_message">
-            <column name="message" value="Стартовое заполнение"/>
-            <column name="patient" value="Org"/>
-            <column name="age" value="55"/>
+        <insert tableName="patients">
+            <column name="name" value="Evgen"/>
+            <column name="age" value="57"/>
+            <column name="status" value="h"/>
+            <column name="d_id" value="3"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="name" value="Artem"/>
+            <column name="age" value="18"/>
+            <column name="status" value="h"/>
+            <column name="d_id" value="1"/>
         </insert>
     </changeSet>
 

@@ -15,9 +15,6 @@ public class RabbitMqListener {
 
     private final MessageService messageService;
 
-    private static final String allerttable="allert_table";
-    private static final String dailytable="daily_table";
-    private static final String errortable="error_table";
 
     @Autowired
     public RabbitMqListener(MessageService messageService) {
@@ -26,16 +23,16 @@ public class RabbitMqListener {
 
     @RabbitListener(queues = RabbitConfig.ALERT_QUEUE)
     public void listenalert(String message) throws JsonProcessingException {
-        messageService.saveMessage(message,allerttable);
+        messageService.saveMessageAllert(message);
 
     }
     @RabbitListener(queues = RabbitConfig.DAILY_QUEUE)
     public void listendaily(String message) throws JsonProcessingException {
-        messageService.saveMessage(message,dailytable);
+        messageService.saveMessageDaily(message);
 
     }
     @RabbitListener(queues = RabbitConfig.ERROR_QUEUE)
     public void listenerror(String message) throws JsonProcessingException {
-        messageService.saveMessage(message,errortable);
+        messageService.saveMessageError(message);
     }
 }
