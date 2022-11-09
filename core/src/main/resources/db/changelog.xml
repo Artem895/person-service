@@ -3,7 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-    <include file="db/0.0.1/initial.xml"/>
     <include file="db/0.0.1/fill_data.xml"/>
+    <include file="db/0.0.1/data.sql"/>
+    <include file="db/0.0.1/create_tabels_security.xml"/>
 
 </databaseChangeLog>

@@ -3,43 +3,81 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-    <changeSet id="2" author="ArtemU">
+    <changeSet id="1" author="ArtemU">
         <comment>
-            Заполняем таблицы пробными данными
+            Создаем таблицы
         </comment>
-        <insert tableName="doctor">
-            <column name="name" value="Axmat"/>
-        </insert>
-        <insert tableName="doctor">
-            <column name="name" value="Hamzat"/>
-        </insert>
-        <insert tableName="doctor">
-            <column name="name" value="Arrarat"/>
-        </insert>
-        <insert tableName="patients">
-            <column name="name" value="Ivan"/>
-            <column name="age" value="27"/>
-            <column name="status" value="h"/>
-            <column name="d_id" value="1"/>
-        </insert>
-        <insert tableName="patients">
-            <column name="name" value="Oleg"/>
-            <column name="age" value="47"/>
-            <column name="status" value="h"/>
-            <column name="d_id" value="2"/>
-        </insert>
-        <insert tableName="patients">
-            <column name="name" value="Evgen"/>
-            <column name="age" value="57"/>
-            <column name="status" value="h"/>
-            <column name="d_id" value="3"/>
-        </insert>
-        <insert tableName="patients">
-            <column name="name" value="Artem"/>
-            <column name="age" value="18"/>
-            <column name="status" value="h"/>
-            <column name="d_id" value="1"/>
-        </insert>
+        <createTable tableName="contact">
+            <column name="id" type="bigint"  autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true" />
+            </column>
+            <column name="phone_number" type="VARCHAR(32)"/>
+            <column name="email" type="VARCHAR(128)"/>
+            <column name="profile_link" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="medical_card">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true" />
+            </column>
+            <column name="client_status" type="char"/>
+            <column name="med_status" type="char"/>
+            <column name="registry_date" type="date"/>
+            <column name="comment" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="person_data">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true" />
+            </column>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="birth_dt" type="date"/>
+            <column name="age" type="INTEGER"/>
+            <column name="sex" type="char"/>
+            <column name="contact_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_c_id" references="contact(id)"/>
+            </column>
+            <column name="medical_card_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_mk_id" references="medical_card(id)"/>
+            </column>
+            <column name="parent_id" type="bigint" >
+                <constraints  foreignKeyName="fk_p_id"  references="person_data(id)"/>
+            </column>
+        </createTable>
+        <createTable tableName="address">
+            <column name="id" type="bigint"  autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true" />
+            </column>
+            <column name="contact_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_ca_id" references="contact(id)"/>
+            </column>
+            <column name="country_id" type="bigint"/>
+            <column name="sity" type="VARCHAR(255)"/>
+            <column name="index" type="INTEGER"/>
+            <column name="street" type="VARCHAR(255)"/>
+            <column name="building" type="VARCHAR(32)"/>
+            <column name="flat" type="VARCHAR(32)"/>
+        </createTable>
+        <createTable tableName="illness">
+            <column name="id" type="bigint"  autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true" />
+            </column>
+            <column name="medical_card_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_mkc_id" references="medical_card(id)"/>
+            </column>
+            <column name="type_id" type="bigint"/>
+            <column name="heaviness" type="char"/>
+            <column name="appearance_data" type="timestamp"/>
+            <column name="recovery_dt" type="date"/>
+        </createTable>
+        <createTable tableName="signals">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true" />
+            </column>
+            <column name="person_data_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_pds_id" references="person_data(id)"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+        </createTable>
     </changeSet>
-
 </databaseChangeLog>

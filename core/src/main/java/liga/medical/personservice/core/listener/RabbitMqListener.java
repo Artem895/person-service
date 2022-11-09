@@ -23,16 +23,19 @@ public class RabbitMqListener {
 
     @RabbitListener(queues = RabbitConfig.ALERT_QUEUE)
     public void listenalert(String message) throws JsonProcessingException {
-        messageService.saveMessageAllert(message);
+        System.out.println("получил сообщение из alert");
+        messageService.saveMessage(message);
 
     }
     @RabbitListener(queues = RabbitConfig.DAILY_QUEUE)
     public void listendaily(String message) throws JsonProcessingException {
-        messageService.saveMessageDaily(message);
+        System.out.println("получил сообщение из dayly");
+        messageService.saveMessage(message);
 
     }
     @RabbitListener(queues = RabbitConfig.ERROR_QUEUE)
     public void listenerror(String message) throws JsonProcessingException {
-        messageService.saveMessageError(message);
+        System.out.println("получил сообщение из error");
+        messageService.saveMessage(message);
     }
 }
