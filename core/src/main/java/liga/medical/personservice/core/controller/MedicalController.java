@@ -1,5 +1,6 @@
 package liga.medical.personservice.core.controller;
 
+import corelog.myanotation.DbLog;
 import liga.medical.personservice.core.model.*;
 import liga.medical.personservice.core.service.*;
 import org.springframework.http.HttpStatus;
@@ -23,46 +24,52 @@ public class MedicalController {
         this.medicalCardService = medicalCardService;
     }
 
-
+    @DbLog
     @GetMapping(value = "/find/pd/{id}")
     public ResponseEntity <PersonDataModel> findPDbyid(@PathVariable(name = "id") long id){
         return new ResponseEntity<>(personDataService.findById(id), HttpStatus.OK);
     }
+    @DbLog
     @GetMapping(value = "/find/address/{id}")
     public ResponseEntity <AddressModel> findAdressbyid(@PathVariable(name = "id") long id){
         return new ResponseEntity<>(addressService.findById(id), HttpStatus.OK);
     }
+    @DbLog
     @GetMapping(value = "/find/contact/{id}")
     public ResponseEntity <ContactModel> findContactbyid(@PathVariable(name = "id") long id){
         return new ResponseEntity<>(contactService.findById(id), HttpStatus.OK);
     }
+    @DbLog
     @GetMapping(value = "/find/illness/{id}")
     public ResponseEntity <IllnessModel> findIllnessbyid(@PathVariable(name = "id") long id){
         return new ResponseEntity<>(illnessService.findById(id), HttpStatus.OK);
     }
+    @DbLog
     @GetMapping(value = "/find/mk/{id}")
     public ResponseEntity <MecalCardModel> findMkbyid(@PathVariable(name = "id") long id){
         return new ResponseEntity<>(medicalCardService.findById(id), HttpStatus.OK);
     }
-
+    @DbLog
     @PostMapping(value = "/add/pd")
     public ResponseEntity <PersonDataModel> findPDbyid(@RequestBody PersonDataModel personDataModel){
         return new ResponseEntity<>(personDataService.save(personDataModel), HttpStatus.OK);
     }
-
+    @DbLog
     @PostMapping(value = "/add/adress")
     public ResponseEntity <AddressModel> findAdressbyid(@RequestBody AddressModel addressModel){
         return new ResponseEntity<>(addressService.save(addressModel), HttpStatus.OK);
     }
+    @DbLog
     @PostMapping(value = "/add/contact")
     public ResponseEntity <ContactModel> findContactbyid(@RequestBody ContactModel contactModel){
         return new ResponseEntity<>(contactService.save(contactModel), HttpStatus.OK);
     }
-
+    @DbLog
     @PostMapping(value = "/add/illness")
     public ResponseEntity <IllnessModel> findIllnessbyid(@RequestBody IllnessModel illnessModel){
         return new ResponseEntity<>(illnessService.save(illnessModel), HttpStatus.OK);
     }
+    @DbLog
     @PostMapping(value = "/add/mk")
     public ResponseEntity <MecalCardModel> findMkbyid(@RequestBody MecalCardModel mecalCardModel){
         return new ResponseEntity<>(medicalCardService.save(mecalCardModel), HttpStatus.OK);

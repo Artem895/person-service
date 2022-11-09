@@ -1,5 +1,6 @@
 package liga.medical.personservice.core.controller;
 
+import corelog.myanotation.DbLog;
 import liga.medical.personservice.core.dto.UserDto;
 import liga.medical.personservice.core.model.mysecuritymodel.User;
 import liga.medical.personservice.core.service.securityservice.UserService;
@@ -23,6 +24,7 @@ public class AdminController {
         this.userService = userService;
     }
 
+    @DbLog
     @GetMapping(value = "user/{id}")
     public ResponseEntity<UserDto> findUserByid(@PathVariable(name = "id") long id){
         User user=userService.findbyid(id);
